@@ -11,17 +11,47 @@
 </head>
  
 <body>
-<form>
+    <script src='decimal.js'></script>
+<script type="module">
+    //const Decimal = require('decimal/decimal.js');
+    
+function displayDate(){
+    import Decimal from './decimal.js';
+    var genka;
+    genka=document.forms["myForm"]["inprice"].value;
+    if (genka<5000)
+        {
+            //genka=(genka*1.08*0.07)+150;
+            genka=new Decimal(genka).mul(new Decimal(1.08)).mul(new Decimal(0.07)).add(new Decimal(150)).toNumber()
+        }
+    else if (genka>=10000)
+        {
+            genka=(genka*1.08*0.07)+200;
+        }
+    else
+        {
+            genka=(genka*1.08*0.07)+180;
+        }
+	document.getElementById("outprice").innerHTML=genka;
+
+}
+</script>
+    <form name="myForm">
 <div class="form-group">
     <label for="number">原価:</label>
-    <input type="number" class="form-control" id="price">
+    <input type="number" step="0.001" class="form-control" name="inprice">
   </div>
-     <button type="submit" class="btn btn-primary">計算</button>
+    </form>
 
-</form>
+
+     <button class="btn btn-primary" onclick="displayDate()" >計算</button>
 <div>&nbsp</div>
 <div >価格</div>
-    <div><label id="price"></label></div>
+    <div>
+    <label id="outprice"></label>
+   </div>
+    
+    
 </body>
  
 </html>
