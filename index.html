@@ -8,29 +8,31 @@
   <script src="https://cdn.staticfile.org/popper.js/1.15.0/umd/popper.min.js"></script>
   <script src="https://cdn.staticfile.org/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 <title>price demo</title>
+    <script type="text/javascript" src="decimal.js"></script>
 </head>
  
 <body>
-    <script src='decimal.js'></script>
-<script type="module">
+    
+<script>
     //const Decimal = require('decimal/decimal.js');
     
 function displayDate(){
-    import Decimal from './decimal.js';
+   // import Decimal from './decimal.js';
     var genka;
-    genka=document.forms["myForm"]["inprice"].value;
+    //var x=new Decimal(1.08);
+    genka=new Decimal(document.forms["myForm"]["inprice"].value);
     if (genka<5000)
         {
             //genka=(genka*1.08*0.07)+150;
-            genka=new Decimal(genka).mul(new Decimal(1.08)).mul(new Decimal(0.07)).add(new Decimal(150)).toNumber()
+            genka=genka.times(1.08).times(0.07).plus(150).toNumber();
         }
     else if (genka>=10000)
         {
-            genka=(genka*1.08*0.07)+200;
+            genka=genka.times(1.08).times(0.07).plus(200).toNumber();
         }
     else
         {
-            genka=(genka*1.08*0.07)+180;
+            genka=genka.times(1.08).times(0.07).plus(180).toNumber();
         }
 	document.getElementById("outprice").innerHTML=genka;
 
