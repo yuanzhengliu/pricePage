@@ -24,15 +24,15 @@ function displayDate(){
     if (genka<5000)
         {
             //genka=(genka*1.08*0.07)+150;
-            genka=genka.times(1.08).times(0.07).plus(150).toNumber();
+            genka=genka.times(1.1).times(0.07).plus(150).toNumber();
         }
     else if (genka>=10000)
         {
-            genka=genka.times(1.08).times(0.07).plus(200).toNumber();
+            genka=genka.times(1.1).times(0.07).plus(200).toNumber();
         }
     else
         {
-            genka=genka.times(1.08).times(0.07).plus(180).toNumber();
+            genka=genka.times(1.1).times(0.07).plus(180).toNumber();
         }
 	document.getElementById("outprice").innerHTML=genka;
 
